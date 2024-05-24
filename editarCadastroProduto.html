@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="cadastroProduto.css">
+    <link rel="stylesheet" href="editarCadastroProduto.css">
     <title>Cadastro Produto</title>
 </head>
 
@@ -32,10 +32,6 @@
                         <label for="peso">Peso</label>
                         <input type="number" name="peso" id="peso" step=".01" min="0" placeholder="100g">
                     </div>
-                    <div class="field">
-                        <label for="quantidade">Qtde</label>
-                        <input type="number" name="quantidade" id="quantidade" min="0" placeholder="100">
-                    </div>
                 </div>
                 <div class="field desc">
                     <label for="descricao">Descrição</label>
@@ -45,7 +41,7 @@
 
             <div id="buttons">
                 <button id="btn-cancel">Cancelar</button>
-                <button id="btn-save">Salvar</button>
+                <button id="btn-save-changes">Salvar Alterações</button>
             </div>
         </div>
     </main>

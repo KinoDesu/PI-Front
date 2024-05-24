@@ -1,0 +1,35 @@
+#header {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-space {
+    display: flex;
+    align-items: flex-end;
+    width: 50%;
+    margin: 2%;
+}
+
+.button {
+    width: 100%;
+    height: 70%;
+    padding: 20% 60px 20% 70px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.button>img {
+    margin: 10px;
+    width: 50%;
+}
