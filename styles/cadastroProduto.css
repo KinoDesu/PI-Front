@@ -14,7 +14,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 100%;
-    gap: 5%;
+    gap: 1%;
 }
 
 #container h1 {
@@ -25,8 +25,8 @@ header {
 #register {
     display: flex;
     flex-direction: column;
-    background-color: #9AC9Ec;
-    margin: 25px;
+    background-color: #9AC9EC;
+    margin: 25px 25px 0 25px;
     padding: 25px;
     border-radius: 15px;
     gap: 10px;
@@ -71,6 +71,7 @@ header {
     background-color: #D9D9D9;
     font-family: 'Inter', sans-serif;
 }
+
 #register .field input::placeholder,
 #register .field textarea::placeholder {
     font-family: 'Inter', sans-serif;
@@ -91,20 +92,23 @@ header {
     gap: 5%;
 }
 
-#buttons button {
+#buttons>button {
     width: 125px;
     padding: 25px;
     font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     border-radius: 50px;
     color: #FFF;
-    border: none;
 }
 
-#buttons #btn-cancel {
+#buttons>button:active {
+    transform: scale(90%);
+}
+
+#btn-cancel {
     background-color: #FF0000;
 }
 
-#buttons #btn-save {
+#btn-save {
     background-color: #24FF00;
 }

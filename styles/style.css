@@ -4,6 +4,28 @@
 * {
     margin: 0;
     padding: 0;
+    scrollbar-width: auto;
+}
+
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 50px;
+    background: #9ac9ec;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #5cb8fe;
+    border-radius: 25px;
+    border: 4px solid #9ac9ec;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 body {

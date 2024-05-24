@@ -25,7 +25,7 @@ header {
 #register {
     display: flex;
     flex-direction: column;
-    background-color: #9AC9Ec;
+    background-color: #9AC9EC;
     margin: 25px;
     padding: 25px;
     border-radius: 15px;
@@ -71,6 +71,7 @@ header {
     background-color: #D9D9D9;
     font-family: 'Inter', sans-serif;
 }
+
 #register .field input::placeholder,
 #register .field textarea::placeholder {
     font-family: 'Inter', sans-serif;
