@@ -24,8 +24,8 @@
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 body {
@@ -40,4 +40,21 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 60%;
+    margin-top: 10px;
+}
+
+#header>img:hover {
+    filter: invert();
+}
+
+button:hover {
+    filter: brightness(80%);
 }

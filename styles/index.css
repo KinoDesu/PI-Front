@@ -1,8 +1,3 @@
-#header {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 #menu {
     display: flex;
     align-items: center;
@@ -29,7 +24,7 @@
     font-weight: bold;
 }
 
-.button > img {
+.button>img {
     margin: 10px;
     width: 50%;
 }
