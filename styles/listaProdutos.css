@@ -33,7 +33,7 @@
 
 #list>#items>.item {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 5%;
 }
@@ -47,4 +47,31 @@
 
 #list>#items>.item>h3 {
     font-size: small;
+}
+
+.imgs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 5px
+}
+
+.imgs>button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.imgs>button>img:hover {
+    filter: invert();
+}
+
+.inactive {
+    color: red;
+    opacity: 50%;
+}
+
+.inactive:hover {
+    cursor: no-drop;
 }
