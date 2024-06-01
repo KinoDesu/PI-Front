@@ -27,6 +27,29 @@
     overflow-y: scroll;
 }
 
+#list>#filter>.content {
+    align-items: start;
+    background-color: #5cb8fe;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#list>#filter>.content>div {
+    display: flex;
+    gap: 5px;
+    font-size: small;
+}
+
+#list>#btn-filter {
+    font-family: 'Inter', sans-serif;
+    width: 50%;
+    align-self: center;
+    padding: 5px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+
 #list>#items {
     list-style: none;
 }

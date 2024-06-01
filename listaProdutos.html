@@ -20,6 +20,35 @@
             <h1>Lista de <br> Produtos</h1>
 
             <div id="list">
+                <div id="filter">
+                    <span>Filtro:</span>
+                    <div class="content">
+                        <div>
+                            <input type="radio" name="filter" id="name">
+                            <label for="name">Nome</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="filter" id="amount">
+                            <label for="amount">Quantidade</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="filter" id="date">
+                            <label for="date">Data de criação</label>
+                        </div>
+                    </div>
+                    <span>Ordem:</span>
+                    <div class="content">
+                        <div>
+                            <input type="radio" name="order" id="increasing">
+                            <label for="increasing">Crescente</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="order" id="decreasing">
+                            <label for="decreasing">Decrescente</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="btn-filter">Filtrar</button>
                 <ul id="items">
                 </ul>
             </div>
