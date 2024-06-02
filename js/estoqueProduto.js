@@ -1,6 +1,7 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
 
 var result;
+var sorted;
 
 async function getListaProdutos() {
 
@@ -110,8 +111,16 @@ filterButtons.forEach(btn => {
         let order;
 
         filterButtons.forEach(btnSelected => {
-            btnSelected.classList.remove("selected");
-            btnSelected.classList.remove("rev-selected");
+            if(btn.classList.length >1){
+                btn.classList.toggle("selected")
+                btn.classList.toggle("rev-selected")
+            }else{
+                filterButtons.forEach(element=>{
+                    element.classList.remove("selected")
+                    element.classList.remove("rev-selected")
+                })
+                btn.classList.add("selected")
+            }
         });
 
         getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
@@ -121,8 +130,6 @@ filterButtons.forEach(btn => {
 });
 
 function sortResult(filter) {
-    let sorted;
-
     document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
@@ -165,14 +172,12 @@ function sortResult(filter) {
         default:
             break;
     }
-    result = sorted;
     return sorted;
 }
 
 function reverseSort(filter) {
-    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
-
-    return result.reverse();
+    sorted = sorted.reverse();
+    return sorted;
 }
 
 document.getElementById("btn-save").addEventListener("click", () => {

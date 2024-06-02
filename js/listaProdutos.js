@@ -109,8 +109,16 @@ filterButtons.forEach(btn => {
         let order;
 
         filterButtons.forEach(btnSelected => {
-            btnSelected.classList.remove("selected");
-            btnSelected.classList.remove("rev-selected");
+            if(btn.classList.length >1){
+                btn.classList.toggle("selected")
+                btn.classList.toggle("rev-selected")
+            }else{
+                filterButtons.forEach(element=>{
+                    element.classList.remove("selected")
+                    element.classList.remove("rev-selected")
+                })
+                btn.classList.add("selected")
+            }
         });
 
         getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
@@ -143,10 +151,10 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                if(nA < nB){
+                if (nA < nB) {
                     return -1;
                 }
-                if(nA>nB){
+                if (nA > nB) {
                     return 1;
                 }
                 return 0;
@@ -165,10 +173,10 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                if(nA < nB){
+                if (nA < nB) {
                     return -1;
                 }
-                if(nA>nB){
+                if (nA > nB) {
                     return 1;
                 }
                 return 0;
@@ -190,17 +198,11 @@ function sortResult(filter) {
         default:
             break;
     }
-    console.log("sort - ");
-    console.table(sorted)
     return sorted;
 }
 
 function reverseSort(filter) {
-    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
-
     sorted = sorted.reverse();
-    console.log("reverse - ");
-    console.table(sorted)
 
     return sorted;
 }
