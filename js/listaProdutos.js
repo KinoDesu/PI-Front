@@ -1,6 +1,4 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
-sessionStorage.setItem("key", "value");
-
 var result;
 var sorted;
 

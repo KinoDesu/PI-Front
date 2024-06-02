@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/listaProdutos.css">
     <script src="js/listaProdutos.js" defer></script>
-    <title>Lista de Produto</title>
+    <title>Últimas Movimentações</title>
 </head>
 
 <body>
@@ -17,22 +17,18 @@
             <img src="./resources/images/image 46.png" alt="página inicial" onclick="location.href='index.html'">
         </header>
         <div id="container">
-            <h1>Lista de <br> Produtos</h1>
+            <h1>Últimas Movimentações</h1>
 
             <div id="filter">
-                <div id="search">
-                    <input type="text" id="inpt-search" placeholder="Pesquisar por nome">
-                    <button id="btn-search"><img src="./resources/images/check.png" alt=""></button>
-                </div>
                 <div id="options">
                     <button class="btn-filter" id="btn-id" value="id"><img src="./resources/images/numeric.png"
                             alt="">ID</button>
                     <button class="btn-filter" id="btn-name" value="name"><img src="./resources/images/label.png"
-                            alt="">Nome</button>
+                            alt="">TIPO</button>
                     <button class="btn-filter" id="btn-active" value="active"><img
-                            src="./resources/images/pick-list.png" alt="">Status</button>
-                    <button class="btn-filter" id="btn-amount" value="amount"><img src="./resources/images/packages.png"
-                            alt="">QTD</button>
+                            src="./resources/images/pick-list.png" alt="">DT. Inicio</button>
+                    <button class="btn-filter" id="btn-active" value="active"><img
+                            src="./resources/images/pick-list.png" alt="">DT. Fim</button>
                 </div>
             </div>
 
@@ -42,14 +38,6 @@
             </div>
         </div>
     </main>
-    <dialog id="modal-status" class="modal">
-        <div class="modal-body">
-            <h3>Mudar Disponibilidade!</h3>
-            <h2>Deseja mudar o status?</h2>
-            <button id="close-modal-yes" class="close-modal">Confirmar</button>
-            <button id="close-modal-no" class="close-modal">Cancelar</button>
-        </div>
-    </dialog>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 </body>
 
