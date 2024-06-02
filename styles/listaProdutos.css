@@ -14,40 +14,74 @@
     color: #FFF;
 }
 
+#filter {
+    width: 90%;
+}
+
+#filter button {
+    font-family: 'Inter', sans-serif;
+    padding: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    background-color: #9AC9EC;
+    display: flex;
+    align-items: center;
+}
+
+#filter>#search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#filter>#search>#inpt-search {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 50px;
+    width: 100%;
+}
+
+#filter>#search img{
+    width: 15px;
+}
+
+#filter>#options {
+    display: flex;
+    justify-content: space-between;
+}
+
+#filter>#options>.selected {
+    border: 2px solid;
+    border-color: #00FF00 #FFFF00 #FFFF00 #00FF00 ;
+}
+
+#filter>#options>.rev-selected {
+    border: 2px solid;
+    border-color: #FFFF00 #FF0000 #FF0000 #FFFF00;
+}
+
+#filter>#options>.btn-filter>img {
+    width: 15px;
+    margin-right: 5px;
+}
+
 #list {
     display: flex;
     flex-direction: column;
     background-color: #9AC9EC;
-    margin: 25px 25px 0 25px;
-    padding: 25px;
+    margin: 15px 25px 0 25px;
+    padding: 15px 25px;
     border-radius: 10px;
     gap: 5px;
     width: 75%;
     max-height: 60vh;
     overflow-y: scroll;
-}
-
-#list>#filter>.content {
-    align-items: start;
-    background-color: #5cb8fe;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-#list>#filter>.content>div {
-    display: flex;
-    gap: 5px;
-    font-size: small;
-}
-
-#list>#btn-filter {
-    font-family: 'Inter', sans-serif;
-    width: 50%;
-    align-self: center;
-    padding: 5px;
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    border-radius: 50px;
 }
 
 #list>#items {
@@ -61,7 +95,12 @@
     gap: 5%;
 }
 
-#list>#items>.item>h3:first-of-type {
+#list>#items>hr {
+    margin: 5px 0;
+    border-color: #000;
+}
+
+#list>#items>.item>h3:nth-of-type(2) {
     width: 125px;
     white-space: nowrap;
     overflow: hidden;
@@ -72,7 +111,7 @@
     font-size: small;
 }
 
-.imgs {
+.actions {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,13 +119,13 @@
     gap: 5px
 }
 
-.imgs>button {
+.actions>button {
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
-.imgs>button>img:hover {
+.actions>button>img:hover {
     filter: invert();
 }
 

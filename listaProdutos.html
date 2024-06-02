@@ -19,36 +19,24 @@
         <div id="container">
             <h1>Lista de <br> Produtos</h1>
 
-            <div id="list">
-                <div id="filter">
-                    <span>Filtro:</span>
-                    <div class="content">
-                        <div>
-                            <input type="radio" name="filter" id="name">
-                            <label for="name">Nome</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter" id="amount">
-                            <label for="amount">Quantidade</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter" id="date">
-                            <label for="date">Data de criação</label>
-                        </div>
-                    </div>
-                    <span>Ordem:</span>
-                    <div class="content">
-                        <div>
-                            <input type="radio" name="order" id="increasing">
-                            <label for="increasing">Crescente</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="order" id="decreasing">
-                            <label for="decreasing">Decrescente</label>
-                        </div>
-                    </div>
+            <div id="filter">
+                <div id="search">
+                    <input type="text" id="inpt-search" placeholder="Pesquisar por nome">
+                    <button id="btn-search"><img src="./resources/images/check.png" alt=""></button>
                 </div>
-                <button type="button" id="btn-filter">Filtrar</button>
+                <div id="options">
+                    <button class="btn-filter selected" id="btn-id" value="id"><img src="./resources/images/numeric.png"
+                            alt="">ID</button>
+                    <button class="btn-filter rev-selected" id="btn-name" value="name"><img
+                            src="./resources/images/label.png" alt="">Nome</button>
+                    <button class="btn-filter" id="btn-active" value="active"><img
+                            src="./resources/images/pick-list.png" alt="">Status</button>
+                    <button class="btn-filter" id="btn-amount" value="amount"><img src="./resources/images/packages.png"
+                            alt="">QTD</button>
+                </div>
+            </div>
+
+            <div id="list">
                 <ul id="items">
                 </ul>
             </div>

@@ -39,11 +39,13 @@
 #register .desc textarea {
     width: 87%;
     text-transform: uppercase;
+    
 }
 
 #register .name input::placeholder,
 #register .desc textarea::placeholder {
     text-transform: uppercase;
+    
 }
 
 #register .field {
@@ -63,6 +65,7 @@
     border-radius: 15px;
     background-color: #D9D9D9;
     font-family: 'Inter', sans-serif;
+    background-color: #FFF;
 }
 
 #register .field input::placeholder,
@@ -78,6 +81,7 @@
 
 #register #infos input {
     width: 60%;
+    background-color: #FFF;
 }
 
 #buttons {

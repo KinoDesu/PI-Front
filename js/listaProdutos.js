@@ -1,8 +1,10 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
 
+var result;
+
 async function getListaProdutos() {
 
-    const result = await fetch(urlApiProduto).then(data => data.json());
+    result = await fetch(urlApiProduto).then(data => data.json());
 
     showProdutos(result);
 
@@ -10,6 +12,19 @@ async function getListaProdutos() {
 
 function showProdutos(produtos) {
     const listSpace = document.getElementById("items");
+    listSpace.innerHTML = "";
+
+    let liHeader = document.createElement("li");
+    liHeader.className = "item";
+    liHeader.setAttribute("id", "header");
+    liHeader.innerHTML = `
+        <h3 class="cod" style="text-align: center;">ID</h3>
+        <h3 class="name" style="text-align: center;">Título</h3>
+        <h3 class="amount">Qtd</h3>
+        <h3 class="actions">Ações</h3>
+        <hr>
+    `;
+    listSpace.appendChild(liHeader);
 
     produtos.forEach(produto => {
         let liProduto = document.createElement("li");
@@ -20,8 +35,9 @@ function showProdutos(produtos) {
         }
 
         liProduto.innerHTML = `
+        <h3 class="cod">${produto.produtoId}</h3>
         <h3 class="name">${produto.nome}</h3>
-        <h3 class="qtde">${produto.quantidade}</h3>
+        <h3 class="amount">${produto.quantidade}</h3>
         <div class="imgs">
         <button class="btn-alterar">
             <img src="./resources/images/image 23.png" alt="editar"
@@ -50,3 +66,120 @@ function alterarStatus() {
 }
 
 getListaProdutos();
+
+document.getElementById("btn-search").addEventListener("click", async () => {
+    let search = document.getElementById("inpt-search").value;
+
+    let resultSearch = searchProduct(search)
+
+    if (resultSearch.length() > 0) {
+        showProdutos(resultSearch)
+    } else {
+        document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+    }
+});
+
+async function searchProduct(search) {
+    return await fetch(`${urlApiProduto}/busca/${search}`);
+}
+
+function setCookie(nome, info, exdays) {
+    Cookies.set(nome, info, exdays)
+}
+
+function getCookie(nome) {
+    return Cookies.get(nome)
+}
+
+setCookie("id", 0, 1);
+setCookie("name", 0, 1);
+setCookie("active", 0, 1);
+setCookie("amount", 0, 1);
+
+document.getElementsByClassName("btn-filter").forEach(btn => {
+    btn.addEventListener("click", async () => {
+        let filter = btn.value;
+        let order;
+
+        document.getElementsByClassName("btn-filter").forEach(btnSelected => {
+            btnSelected.classList.remove("selected");
+            btnSelected.classList.remove("rev-selected");
+        });
+
+        getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
+
+        showProdutos(order);
+    });
+});
+
+function sortResult(filter) {
+    let sorted;
+
+    document.getElementById(`bnt-${filter}`).classList.add("selected");
+
+    switch (filter) {
+        case "id":
+            setCookie("id", 1, 1);
+            setCookie("name", 0, 1);
+            setCookie("active", 0, 1);
+            setCookie("amount", 0, 1);
+
+            sorted = result.sort((a, b) => a.produtoId - b.produtoId);
+
+            break;
+        case "name":
+            setCookie("id", 0, 1);
+            setCookie("name", 1, 1);
+            setCookie("active", 0, 1);
+            setCookie("amount", 0, 1);
+
+            sorted = result.sort((a, b) => {
+                const nA = a.name.toUpperCase();
+                const nB = b.name.toUpperCase();
+
+                nA < nB ? -1 : nA > nB ? 1 : 0;
+            });
+
+            break;
+        case "active":
+            setCookie("id", 0, 1);
+            setCookie("name", 0, 1);
+            setCookie("active", 1, 1);
+            setCookie("amount", 0, 1);
+
+            let prevSorted;
+
+            prevSorted = result.sort((a, b) => {
+                const nA = a.name.toUpperCase();
+                const nB = b.name.toUpperCase();
+
+                nA < nB ? -1 : nA > nB ? 1 : 0;
+            });
+
+            sorted = prevSorted.sort((a, b) => a.inativo - b.inativo);
+
+            break;
+        case "amount":
+            setCookie("id", 0, 1);
+            setCookie("name", 0, 1);
+            setCookie("active", 0, 1);
+            setCookie("amount", 1, 1);
+
+            sorted = result.sort((a, b) => a.quantidade - b.quantidade);
+
+            break;
+
+        default:
+            break;
+    }
+
+    return sorted;
+}
+
+function reverseSort(filter) {
+    document.getElementById(`bnt-${filter}`).classList.replace("selected", "rev-selected");
+
+    let reverseSorted = document.getElementsByClassName("item");
+
+    return [...reverseSorted].reverse();
+}
