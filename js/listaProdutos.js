@@ -58,19 +58,20 @@ function showProdutos(produtos) {
     alterarStatus();
 }
 
-let modal = document.getElementById('inactivated-product');
-let modalConfirm = document.getElementById("btn-confirm");
-document.getElementById('btn-cancel').addEventListener("click", () => {
-    modal.close()
-})
-
 function alterarStatus() {
     let changeStatusButton = document.querySelectorAll(".btn-excluir");
     changeStatusButton.forEach(element => {
         element.addEventListener("click", async () => {
-            modal.showModal();
-            modalConfirm.addEventListener("click", async () => {
+
+            document.getElementById("modal-status").style.display = "block"
+    
+            document.getElementById("close-modal-yes").addEventListener("click", async () => {
+                document.getElementById("modal-status").style.display = "none"
                 await fetch(`${urlApiProduto}/${element.value}`, { method: 'DELETE' })
+                location.reload();
+            })
+            document.getElementById("close-modal-no").addEventListener("click", () => {
+                document.getElementById("modal-status").style.display = "none"
                 location.reload();
             })
         })

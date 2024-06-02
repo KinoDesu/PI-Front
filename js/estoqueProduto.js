@@ -183,21 +183,22 @@ document.getElementById("btn-save").addEventListener("click", () => {
     let bsb = Array.from(alterProducts)
     let altered = [];
     bsb.forEach(element => {
-        if (element.value != 0 || element.value != "") {
+        if (element.value > 0 || element.value < 0) {
             altered.push(element);
         }
     });
 
-    document.getElementById("modal-confirmation").style.display = "block"
-
-    document.getElementById("close-modal-confirmation-yes").addEventListener("click", () => {
-        document.getElementById("modal-confirmation").style.display = "none"
-        putProducts(altered);
-    })
-    document.getElementById("close-modal-confirmation-no").addEventListener("click", () => {
-        document.getElementById("modal-confirmation").style.display = "none"
-    })
-
+    if(altered.length>0){
+        document.getElementById("modal-confirmation").style.display = "block"
+    
+        document.getElementById("close-modal-confirmation-yes").addEventListener("click", () => {
+            document.getElementById("modal-confirmation").style.display = "none"
+            putProducts(altered);
+        })
+        document.getElementById("close-modal-confirmation-no").addEventListener("click", () => {
+            document.getElementById("modal-confirmation").style.display = "none"
+        })
+    }
 });
 
 async function putProducts(alterProducts) {

@@ -16,14 +16,6 @@
             <img src="./resources/images/image 46-1.png" alt="voltar" onclick="location.href='index.html'">
             <img src="./resources/images/image 46.png" alt="página inicial" onclick="location.href='index.html'">
         </header>
-        <dialog id="inactivated-product">
-            <h2>Mudar Disponibilidade!</h2>
-            <p>Deseja mudar o status?</p>
-            <div id="btns">
-                <button id="btn-cancel">Cancelar</button>
-                <button id="btn-confirm">Confirmar</button>
-            </div>
-        </dialog>
         <div id="container">
             <h1>Lista de <br> Produtos</h1>
 
@@ -78,6 +70,14 @@
             </div>
         </div>
     </main>
+    <dialog id="modal-status" class="modal">
+        <div class="modal-body">
+            <h3>Mudar Disponibilidade!</h3>
+            <h2>Deseja mudar o status?</h2>
+            <button id="close-modal-yes" class="close-modal">Confirmar</button>
+            <button id="close-modal-no" class="close-modal">Cancelar</button>
+        </div>
+    </dialog>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 </body>
 
