@@ -121,7 +121,6 @@ filterButtons.forEach(btn => {
 
 function sortResult(filter) {
     document.getElementById(`btn-${filter}`).classList.add("selected");
-    document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
         case "id":
@@ -190,17 +189,16 @@ function sortResult(filter) {
         default:
             break;
     }
-    console.log("sort - ");
-    console.table(sorted)
+
     return sorted;
 }
 
 function reverseSort(filter) {
-    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
+    setCookie(filter, 0, 1);
+
+    document.getElementById(`btn-${filter}`).classList.add("rev-selected");
 
     sorted = sorted.reverse();
-    console.log("reverse - ");
-    console.table(sorted)
 
     return sorted;
 }

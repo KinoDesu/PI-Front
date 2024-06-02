@@ -170,6 +170,8 @@ function sortResult(filter) {
 }
 
 function reverseSort(filter) {
+    setCookie(filter, 0, 1);
+    
     document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
 
     return result.reverse();
@@ -181,7 +183,7 @@ document.getElementById("btn-save").addEventListener("click", () => {
     let altered = [];
     bsb.forEach(element => {
         if (element.value != 0 || element.value != "") {
-            altered.push(element)
+            altered.push(element);
         }
     });
 
