@@ -51,11 +51,24 @@
             </div>
         </div>
     </main>
-    <div id="modal-erro">
-        <div id="modal-body">
+    <div id="modal-erro" class="modal">
+        <div class="modal-body">
             <h3>O(s) seguinte(s) campo(s) está(ão) inválido(s):</h3>
             <h3 id="msg-erro"></h3>
-            <button id="close-modal">fechar</button>
+            <button id="close-modal-erro" class="close-modal">fechar</button>
+        </div>
+    </div>
+    <div id="modal-done" class="modal">
+        <div class="modal-body">
+            <h3>O produto foi salvo com sucesso!</h3>
+            <button id="close-modal-done" class="close-modal">Feito!</button>
+        </div>
+    </div>
+    <div id="modal-malfunction" class="modal">
+        <div class="modal-body">
+            <h3>Houve um erro o cadastrar o produto...</h3>
+            <h3>Tente novamente</h3>
+            <button id="close-modal-malfunction" class="close-modal">fechar</button>
         </div>
     </div>
 </body>

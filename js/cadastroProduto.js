@@ -103,10 +103,17 @@ async function saveProduto() {
         });
 
         if (status == 200) {
-            alert("Produto criado com sucesso!");
-            window.location = "/index.html";
+            document.getElementById("modal-done").style.display = "block"
+            
+            document.getElementById("close-modal-done").addEventListener("click",()=>{
+                window.location = "/index.html";
+            })
         } else {
-            alert("falha ao criar produto. Tente novamente!")
+            document.getElementById("modal-malfunction").style.display = "block"
+            
+            document.getElementById("close-modal-malfunction").addEventListener("click",()=>{
+                document.getElementById("modal-malfunction").style.display = "none"
+            })
         }
     }
     else {
@@ -128,13 +135,13 @@ async function saveProduto() {
         document.getElementById("msg-erro").innerHTML = finalError
         document.getElementById("modal-erro").style.display = "block"
         erros = [];
-
-        document.getElementById("close-modal").addEventListener("click",()=>{
+        
+        document.getElementById("close-modal-erro").addEventListener("click",()=>{
             document.getElementById("modal-erro").style.display = "none"
         })
     }
-
-
+    
+    
 }
 
 btnSalvar.addEventListener("click", async () => {
