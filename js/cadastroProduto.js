@@ -1,7 +1,6 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
 
 const btnSalvar = document.getElementById("btn-save");
-var errorMessage = "O(s) seguinte(s) campo(s) está(ão) inválido(s):";
 var erros = []
 
 function validarNome() {

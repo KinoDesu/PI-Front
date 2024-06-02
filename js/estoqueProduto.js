@@ -78,12 +78,15 @@ getListaProdutos();
 document.getElementById("btn-search").addEventListener("click", async () => {
     let search = document.getElementById("inpt-search").value;
 
-    let resultSearch = searchProduct(search)
-
-    if (resultSearch.length() > 0) {
-        showProdutos(resultSearch)
+    if (search.length == 0) {
+        showProdutos(result)
     } else {
-        document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+        try {
+            let resultSearch = await fetch(`${urlApiProduto}/busca/${search}`).then(data => data.json());
+            showProdutos(resultSearch)
+        } catch (error) {
+            document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+        }
     }
 });
 
@@ -142,10 +145,10 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                if(nA < nB){
+                if (nA < nB) {
                     return -1;
                 }
-                if(nA>nB){
+                if (nA > nB) {
                     return 1;
                 }
                 return 0;
@@ -169,7 +172,7 @@ function sortResult(filter) {
 
 function reverseSort(filter) {
     setCookie(filter, 0, 1);
-    
+
     document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
 
     return result.reverse();
@@ -185,7 +188,16 @@ document.getElementById("btn-save").addEventListener("click", () => {
         }
     });
 
-    putProducts(altered);
+    document.getElementById("modal-confirmation").style.display = "block"
+
+    document.getElementById("close-modal-confirmation-yes").addEventListener("click", () => {
+        document.getElementById("modal-confirmation").style.display = "none"
+        putProducts(altered);
+    })
+    document.getElementById("close-modal-confirmation-no").addEventListener("click", () => {
+        document.getElementById("modal-confirmation").style.display = "none"
+    })
+
 });
 
 async function putProducts(alterProducts) {
