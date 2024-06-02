@@ -1,4 +1,6 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
+sessionStorage.setItem("key", "value");
+
 
 var result;
 
@@ -22,9 +24,10 @@ function showProdutos(produtos) {
         <h3 class="name" style="text-align: center;">Título</h3>
         <h3 class="amount">Qtd</h3>
         <h3 class="actions">Ações</h3>
-        <hr>
     `;
     listSpace.appendChild(liHeader);
+
+    listSpace.appendChild(document.createElement("hr"))
 
     produtos.forEach(produto => {
         let liProduto = document.createElement("li");
@@ -38,7 +41,7 @@ function showProdutos(produtos) {
         <h3 class="cod">${produto.produtoId}</h3>
         <h3 class="name">${produto.nome}</h3>
         <h3 class="amount">${produto.quantidade}</h3>
-        <div class="imgs">
+        <div class="actions">
         <button class="btn-alterar">
             <img src="./resources/images/image 23.png" alt="editar"
                 onclick="location.href='editarCadastroProduto.html?produto=${produto.produtoId}'">
@@ -96,17 +99,21 @@ setCookie("name", 0, 1);
 setCookie("active", 0, 1);
 setCookie("amount", 0, 1);
 
-document.getElementsByClassName("btn-filter").forEach(btn => {
+
+let filterButtons = document.querySelectorAll(".btn-filter");
+
+filterButtons.forEach(btn => {
     btn.addEventListener("click", async () => {
         let filter = btn.value;
         let order;
 
-        document.getElementsByClassName("btn-filter").forEach(btnSelected => {
+        filterButtons.forEach(btnSelected => {
             btnSelected.classList.remove("selected");
             btnSelected.classList.remove("rev-selected");
         });
 
         getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
+        console.log(order)
 
         showProdutos(order);
     });
@@ -115,7 +122,7 @@ document.getElementsByClassName("btn-filter").forEach(btn => {
 function sortResult(filter) {
     let sorted;
 
-    document.getElementById(`bnt-${filter}`).classList.add("selected");
+    document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
         case "id":
@@ -125,6 +132,7 @@ function sortResult(filter) {
             setCookie("amount", 0, 1);
 
             sorted = result.sort((a, b) => a.produtoId - b.produtoId);
+            result = sorted;
 
             break;
         case "name":
@@ -134,11 +142,12 @@ function sortResult(filter) {
             setCookie("amount", 0, 1);
 
             sorted = result.sort((a, b) => {
-                const nA = a.name.toUpperCase();
-                const nB = b.name.toUpperCase();
+                const nA = a.nome.toUpperCase();
+                const nB = b.nome.toUpperCase();
 
                 nA < nB ? -1 : nA > nB ? 1 : 0;
             });
+            result = sorted;
 
             break;
         case "active":
@@ -150,13 +159,14 @@ function sortResult(filter) {
             let prevSorted;
 
             prevSorted = result.sort((a, b) => {
-                const nA = a.name.toUpperCase();
-                const nB = b.name.toUpperCase();
+                const nA = a.nome.toUpperCase();
+                const nB = b.nome.toUpperCase();
 
                 nA < nB ? -1 : nA > nB ? 1 : 0;
             });
 
             sorted = prevSorted.sort((a, b) => a.inativo - b.inativo);
+            result = sorted;
 
             break;
         case "amount":
@@ -166,6 +176,7 @@ function sortResult(filter) {
             setCookie("amount", 1, 1);
 
             sorted = result.sort((a, b) => a.quantidade - b.quantidade);
+            result = sorted;
 
             break;
 
@@ -177,9 +188,9 @@ function sortResult(filter) {
 }
 
 function reverseSort(filter) {
-    document.getElementById(`bnt-${filter}`).classList.replace("selected", "rev-selected");
+    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
 
-    let reverseSorted = document.getElementsByClassName("item");
+    console.log(result)
 
-    return [...reverseSorted].reverse();
+    return result.reverse();
 }

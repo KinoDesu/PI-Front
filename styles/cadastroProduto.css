@@ -37,15 +37,7 @@
 
 #register .name input,
 #register .desc textarea {
-    width: 87%;
-    text-transform: uppercase;
-    
-}
-
-#register .name input::placeholder,
-#register .desc textarea::placeholder {
-    text-transform: uppercase;
-    
+    width: 87%; 
 }
 
 #register .field {
