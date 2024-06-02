@@ -38,12 +38,12 @@ function showProdutos(produtos) {
         <h3 class="cod">${produto.produtoId}</h3>
         <h3 class="name">${produto.nome}</h3>
         <h3 class="amount">${produto.quantidade}</h3>
-        <div class="imgs">
+        <div class="actions">
         <button class="btn-alterar">
             <img src="./resources/images/image 23.png" alt="editar"
                 onclick="location.href='editarCadastroProduto.html?produto=${produto.produtoId}'">
         </button>
-        <button class="btn-excluir" value=${produto.produtoId}>
+        <button class="btn-excluir" value=${produto.produtoId} data-toggle="modal" data-target="#ModalCentralizado">
             <img src="./resources/images/image 2.png" alt="excluir">
         </button>
         </div>`;
@@ -70,18 +70,17 @@ getListaProdutos();
 document.getElementById("btn-search").addEventListener("click", async () => {
     let search = document.getElementById("inpt-search").value;
 
-    let resultSearch = searchProduct(search)
-
-    if (resultSearch.length() > 0) {
-        showProdutos(resultSearch)
+    if (search.length == 0) {
+        showProdutos(result)
     } else {
-        document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+        try {
+            let resultSearch = await fetch(`${urlApiProduto}/busca/${search}`).then(data => data.json());
+            showProdutos(resultSearch)
+        } catch (error) {
+            document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+        }
     }
 });
-
-async function searchProduct(search) {
-    return await fetch(`${urlApiProduto}/busca/${search}`);
-}
 
 function setCookie(nome, info, exdays) {
     Cookies.set(nome, info, exdays)
@@ -102,8 +101,8 @@ document.getElementsByClassName("btn-filter").forEach(btn => {
         let order;
 
         document.getElementsByClassName("btn-filter").forEach(btnSelected => {
-            btnSelected.classList.remove("selected");
-            btnSelected.classList.remove("rev-selected");
+            btnSelected.classList.toggle("selected");
+            btnSelected.classList.toggle("rev-selected");
         });
 
         getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
@@ -115,7 +114,7 @@ document.getElementsByClassName("btn-filter").forEach(btn => {
 function sortResult(filter) {
     let sorted;
 
-    document.getElementById(`bnt-${filter}`).classList.add("selected");
+    document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
         case "id":
