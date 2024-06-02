@@ -1,6 +1,5 @@
 
 #container {
-    text-transform: uppercase;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
@@ -58,6 +57,7 @@
     border-radius: 15px;
     background-color: #D9D9D9;
     font-family: 'Inter', sans-serif;
+    font-weight: bold;
 }
 
 #register .field input::placeholder,
@@ -87,6 +87,7 @@
     text-transform: uppercase;
     border-radius: 50px;
     color: #FFF;
+    font-weight: bold;
 }
 
 #buttons>button:active {
