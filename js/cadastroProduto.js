@@ -110,7 +110,7 @@ async function saveProduto() {
         }
     }
     else {
-        let finalError = errorMessage;
+        let finalError="";
         for (let i = 0; i < erros.length; i++) {
             let erro = erros[i];
             if (i == erros.length - 1) {
@@ -124,9 +124,14 @@ async function saveProduto() {
                 finalError += ` ${erro},`;
             }
         }
-
-        console.log(finalError);
+        
+        document.getElementById("msg-erro").innerHTML = finalError
+        document.getElementById("modal-erro").style.display = "block"
         erros = [];
+
+        document.getElementById("close-modal").addEventListener("click",()=>{
+            document.getElementById("modal-erro").style.display = "none"
+        })
     }
 
 
