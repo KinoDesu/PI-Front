@@ -1,7 +1,6 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
 sessionStorage.setItem("key", "value");
 
-
 var result;
 var sorted;
 
@@ -43,14 +42,13 @@ function showProdutos(produtos) {
         <h3 class="name">${produto.nome}</h3>
         <h3 class="amount">${produto.quantidade}</h3>
         <div class="actions">
-        <div class="actions">
-        <button class="btn-alterar">
+            <button class="btn-alterar">
             <img src="./resources/images/image 23.png" alt="editar"
                 onclick="location.href='editarCadastroProduto.html?produto=${produto.produtoId}'">
-        </button>
-        <button class="btn-excluir" value=${produto.produtoId} data-toggle="modal" data-target="#ModalCentralizado">
-            <img src="./resources/images/image 2.png" alt="excluir">
-        </button>
+            </button>
+            <button class="btn-excluir" value=${produto.produtoId} data-toggle="modal" data-target="#ModalCentralizado">
+                <img src="./resources/images/image 2.png" alt="excluir">
+            </button>
         </div>`;
 
         listSpace.appendChild(liProduto);
@@ -60,12 +58,21 @@ function showProdutos(produtos) {
     alterarStatus();
 }
 
+let modal = document.getElementById('inactivated-product');
+let modalConfirm = document.getElementById("btn-confirm");
+document.getElementById('btn-cancel').addEventListener("click", () => {
+    modal.close()
+})
+
 function alterarStatus() {
     let changeStatusButton = document.querySelectorAll(".btn-excluir");
     changeStatusButton.forEach(element => {
         element.addEventListener("click", async () => {
-            await fetch(`${urlApiProduto}/${element.value}`, { method: 'DELETE' })
-            location.reload();
+            modal.showModal();
+            modalConfirm.addEventListener("click", async () => {
+                await fetch(`${urlApiProduto}/${element.value}`, { method: 'DELETE' })
+                location.reload();
+            })
         })
     });
 }
@@ -189,7 +196,7 @@ function sortResult(filter) {
         default:
             break;
     }
-    
+
     return sorted;
 }
 
