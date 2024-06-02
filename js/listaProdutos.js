@@ -3,6 +3,7 @@ sessionStorage.setItem("key", "value");
 
 
 var result;
+var sorted;
 
 async function getListaProdutos() {
 
@@ -113,15 +114,12 @@ filterButtons.forEach(btn => {
         });
 
         getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
-        console.log(order)
 
         showProdutos(order);
     });
 });
 
 function sortResult(filter) {
-    let sorted;
-
     document.getElementById(`btn-${filter}`).classList.add("selected");
     document.getElementById(`btn-${filter}`).classList.add("selected");
 
@@ -133,7 +131,6 @@ function sortResult(filter) {
             setCookie("amount", 0, 1);
 
             sorted = result.sort((a, b) => a.produtoId - b.produtoId);
-            result = sorted;
 
             break;
         case "name":
@@ -146,9 +143,14 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                nA < nB ? -1 : nA > nB ? 1 : 0;
+                if(nA < nB){
+                    return -1;
+                }
+                if(nA>nB){
+                    return 1;
+                }
+                return 0;
             });
-            result = sorted;
 
             break;
         case "active":
@@ -163,11 +165,16 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                nA < nB ? -1 : nA > nB ? 1 : 0;
+                if(nA < nB){
+                    return -1;
+                }
+                if(nA>nB){
+                    return 1;
+                }
+                return 0;
             });
 
             sorted = prevSorted.sort((a, b) => a.inativo - b.inativo);
-            result = sorted;
 
             break;
         case "amount":
@@ -177,21 +184,23 @@ function sortResult(filter) {
             setCookie("amount", 1, 1);
 
             sorted = result.sort((a, b) => a.quantidade - b.quantidade);
-            result = sorted;
 
             break;
 
         default:
             break;
     }
-
+    console.log("sort - ");
+    console.table(sorted)
     return sorted;
 }
 
 function reverseSort(filter) {
     document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
 
-    console.log(result)
+    sorted = sorted.reverse();
+    console.log("reverse - ");
+    console.table(sorted)
 
-    return result.reverse();
+    return sorted;
 }

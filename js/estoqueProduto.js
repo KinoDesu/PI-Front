@@ -143,7 +143,13 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                nA < nB ? -1 : nA > nB ? 1 : 0;
+                if(nA < nB){
+                    return -1;
+                }
+                if(nA>nB){
+                    return 1;
+                }
+                return 0;
             });
 
             break;
@@ -186,7 +192,6 @@ async function putProducts(alterProducts) {
     alterProducts.forEach(async item => {
         let id = item.id.split("-")[2];
 
-        console.log(item.value)
         if (item.value > 0) {
             await fetch(`${urlApiProduto}/add/id=${id}&qtde=${item.value}`
                 , { method: 'PUT' })
