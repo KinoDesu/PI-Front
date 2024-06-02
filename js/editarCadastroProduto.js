@@ -122,7 +122,7 @@ async function saveProduto() {
 
         if (status == 200) {
             alert("Produto alterado com sucesso!");
-            window.location = "/index.html";
+            window.location = "/PI-Front/listaProdutos.html";
         } else {
             alert("falha ao criar produto. Tente novamente!")
         }

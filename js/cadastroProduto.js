@@ -105,7 +105,7 @@ async function saveProduto() {
             document.getElementById("modal-done").style.display = "block"
             
             document.getElementById("close-modal-done").addEventListener("click",()=>{
-                window.location = "/index.html";
+                window.location = "/PI-Front/index.html";
             })
         } else {
             document.getElementById("modal-malfunction").style.display = "block"
