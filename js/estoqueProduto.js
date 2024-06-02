@@ -102,12 +102,14 @@ setCookie("id", 0, 1);
 setCookie("name", 0, 1);
 setCookie("amount", 0, 1);
 
-document.getElementsByClassName("btn-filter").forEach(btn => {
+let filterButtons = document.querySelectorAll(".btn-filter");
+
+filterButtons.forEach(btn => {
     btn.addEventListener("click", async () => {
         let filter = btn.value;
         let order;
 
-        document.getElementsByClassName("btn-filter").forEach(btnSelected => {
+        filterButtons.forEach(btnSelected => {
             btnSelected.classList.remove("selected");
             btnSelected.classList.remove("rev-selected");
         });
@@ -121,7 +123,7 @@ document.getElementsByClassName("btn-filter").forEach(btn => {
 function sortResult(filter) {
     let sorted;
 
-    document.getElementById(`bnt-${filter}`).classList.add("selected");
+    document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
         case "id":
@@ -138,8 +140,8 @@ function sortResult(filter) {
             setCookie("amount", 0, 1);
 
             sorted = result.sort((a, b) => {
-                const nA = a.name.toUpperCase();
-                const nB = b.name.toUpperCase();
+                const nA = a.nome.toUpperCase();
+                const nB = b.nome.toUpperCase();
 
                 nA < nB ? -1 : nA > nB ? 1 : 0;
             });
@@ -157,30 +159,41 @@ function sortResult(filter) {
         default:
             break;
     }
-
+    result = sorted;
     return sorted;
 }
 
 function reverseSort(filter) {
-    document.getElementById(`bnt-${filter}`).classList.replace("selected", "rev-selected");
+    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
 
-    let reverseSorted = document.getElementsByClassName("item");
-
-    return [...reverseSorted].reverse();
+    return result.reverse();
 }
 
 document.getElementById("btn-save").addEventListener("click", () => {
     let alterProducts = document.getElementsByClassName("qtde-valor");
+    let bsb = Array.from(alterProducts)
+    let altered = [];
+    bsb.forEach(element => {
+        if (element.value != 0 || element.value != "") {
+            altered.push(element)
+        }
+    });
 
-    putProducts(alterProducts);
+    putProducts(altered);
 });
 
 async function putProducts(alterProducts) {
     alterProducts.forEach(async item => {
         let id = item.id.split("-")[2];
 
-        item.value != 0 ? "" : item.value > 0 ? await fetch(`${urlApiProduto}/add/id=${id}&qtde=${item.value}`, { method: 'PUT' }) : await fetch(`${urlApiProduto}/rem/id=${id}&qtde=${item.value}`, { method: 'PUT' });
-        
+        console.log(item.value)
+        if (item.value > 0) {
+            await fetch(`${urlApiProduto}/add/id=${id}&qtde=${item.value}`
+                , { method: 'PUT' })
+        } else {
+            await fetch(`${urlApiProduto}/rem/id=${id}&qtde=${item.value}`
+                , { method: 'PUT' })
+        }
         location.reload();
     });
 }
