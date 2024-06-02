@@ -1,3 +1,49 @@
+#inactivated-product {
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    width: 75%;
+    transform: translate(-50%, -50%);
+    left: 50vw;
+    top: 50vh;
+    border: solid 2px;
+    border-radius: 5px;
+    padding: 16px;
+    text-align: center;
+    background-color: #9AC9EC;
+}
+
+#inactivated-product>p {
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+#inactivated-product>#btns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#inactivated-product>#btns>button {
+    padding: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#inactivated-product>#btns>#btn-cancel {
+    background-color: #5cb8fe;
+}
+
+#inactivated-product>#btns>#btn-confirm {
+    background-color: #5cb8fe;
+}
+
+#inactivated-product>button:hover {
+    transform: scale(1.05);
+}
+
 #container {
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
@@ -47,7 +93,7 @@
     width: 100%;
 }
 
-#filter>#search img{
+#filter>#search img {
     width: 15px;
 }
 
@@ -58,7 +104,7 @@
 
 #filter>#options>.selected {
     border: 2px solid;
-    border-color: #00FF00 #FFFF00 #FFFF00 #00FF00 ;
+    border-color: #00FF00 #FFFF00 #FFFF00 #00FF00;
 }
 
 #filter>#options>.rev-selected {

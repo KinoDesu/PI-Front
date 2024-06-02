@@ -16,6 +16,14 @@
             <img src="./resources/images/image 46-1.png" alt="voltar" onclick="location.href='index.html'">
             <img src="./resources/images/image 46.png" alt="página inicial" onclick="location.href='index.html'">
         </header>
+        <dialog id="inactivated-product">
+            <h2>Mudar Disponibilidade!</h2>
+            <p>Deseja mudar o status?</p>
+            <div id="btns">
+                <button id="btn-cancel">Cancelar</button>
+                <button id="btn-confirm">Confirmar</button>
+            </div>
+        </dialog>
         <div id="container">
             <h1>Lista de <br> Produtos</h1>
 
@@ -38,6 +46,34 @@
 
             <div id="list">
                 <ul id="items">
+                    <li class="item">
+                        <h3 class="cod">1</h3>
+                        <h3 class="name">${produto.nome}</h3>
+                        <h3 class="amount">100</h3>
+                        <div class="actions">
+                            <button class="btn-alterar">
+                                <img src="./resources/images/image 23.png" alt="editar"
+                                    onclick="location.href='editarCadastroProduto.html?produto=1'">
+                            </button>
+                            <button class="btn-excluir" value=1 data-toggle="modal" data-target="#ModalCentralizado">
+                                <img src="./resources/images/image 2.png" alt="excluir">
+                            </button>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <h3 class="cod">2</h3>
+                        <h3 class="name">${produto.nome}</h3>
+                        <h3 class="amount">100</h3>
+                        <div class="actions">
+                            <button class="btn-alterar">
+                                <img src="./resources/images/image 23.png" alt="editar"
+                                    onclick="location.href='editarCadastroProduto.html?produto=2'">
+                            </button>
+                            <button class="btn-excluir" value=2 data-toggle="modal" data-target="#ModalCentralizado">
+                                <img src="./resources/images/image 2.png" alt="excluir">
+                            </button>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

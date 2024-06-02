@@ -64,6 +64,7 @@
 #register .field input::placeholder,
 #register .field textarea::placeholder {
     font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
 }
 
 #register #infos {
