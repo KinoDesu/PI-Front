@@ -1,6 +1,7 @@
 const urlApiProduto = "http://localhost:5201/api/Produto";
 
 var result;
+var sorted;
 
 async function getListaProdutos() {
 
@@ -121,8 +122,6 @@ filterButtons.forEach(btn => {
 });
 
 function sortResult(filter) {
-    let sorted;
-
     document.getElementById(`btn-${filter}`).classList.add("selected");
 
     switch (filter) {
@@ -165,7 +164,6 @@ function sortResult(filter) {
         default:
             break;
     }
-    result = sorted;
     return sorted;
 }
 

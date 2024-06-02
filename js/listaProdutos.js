@@ -142,10 +142,10 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                if(nA < nB){
+                if (nA < nB) {
                     return -1;
                 }
-                if(nA>nB){
+                if (nA > nB) {
                     return 1;
                 }
                 return 0;
@@ -164,10 +164,10 @@ function sortResult(filter) {
                 const nA = a.nome.toUpperCase();
                 const nB = b.nome.toUpperCase();
 
-                if(nA < nB){
+                if (nA < nB) {
                     return -1;
                 }
-                if(nA>nB){
+                if (nA > nB) {
                     return 1;
                 }
                 return 0;
@@ -189,7 +189,7 @@ function sortResult(filter) {
         default:
             break;
     }
-
+    
     return sorted;
 }
 
