@@ -1,15 +1,18 @@
 #menu {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .btn-space {
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: flex-end;
     width: 50%;
-    margin: 2%;
 }
 
 .button {

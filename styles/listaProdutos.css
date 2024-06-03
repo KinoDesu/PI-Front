@@ -76,41 +76,29 @@
     flex-direction: column;
     background-color: #9AC9EC;
     margin: 15px 25px 0 25px;
-    padding: 15px 25px;
+    padding: 15px;
     border-radius: 10px;
     gap: 5px;
-    width: 75%;
-    max-height: 58vh;
+    width: 85%;
+    max-height: 50vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-#list>#items {
-    list-style: none;
+#list>table {
+    text-align: center;
 }
 
-#list>#items>.item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5%;
+#list>table th,
+#list>table td {
+    padding: 7px;
+    border-bottom: 1px solid;
 }
 
-#list>#items>hr {
-    margin: 5px 0;
-    border-color: #000;
+#list>table>tbody>tr>td>img {
+    width: 17px;
 }
 
-#list>#items>.item>h3:nth-of-type(2) {
-    width: 125px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#list>#items>.item>h3 {
-    font-size: small;
-    font-weight: bold;
-}
 
 .actions {
     display: flex;
@@ -139,7 +127,7 @@
     cursor: no-drop;
 }
 
-.modal{
+.modal {
     display: none;
     position: fixed;
     top: 50%;
@@ -151,7 +139,7 @@
     z-index: 100;
 }
 
-.modal-body{
+.modal-body {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -170,14 +158,16 @@
     justify-content: center;
     gap: 10%;
 }
-.modal-body>h3:first-of-type{
+
+.modal-body>h3:first-of-type {
     font-size: 25px;
 }
-.modal-body>h3:nth-of-type(2){
+
+.modal-body>h3:nth-of-type(2) {
     font-size: 20px;
 }
 
-.close-modal{
+.close-modal {
     width: 55%;
     height: 15%;
     border-radius: 25px;
@@ -188,7 +178,7 @@
     border: none;
 }
 
-#close-modal-yes{
+#close-modal-yes {
     background-color: #24FF00;
-    
+
 }

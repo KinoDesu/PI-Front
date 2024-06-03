@@ -23,9 +23,9 @@ function showProdutos(produtos) {
         <h3 class="name" style="text-align: center;">Título</h3>
         <h3 class="amount">Qtd</h3>
         <h3 class="actions">Ações</h3>
-        <hr>
     `;
     listSpace.appendChild(liHeader);
+    listSpace.appendChild(document.createElement("hr"));
 
     produtos.forEach(produto => {
         let liProduto = document.createElement("li");
@@ -188,9 +188,9 @@ document.getElementById("btn-save").addEventListener("click", () => {
         }
     });
 
-    if(altered.length>0){
+    if (altered.length > 0) {
         document.getElementById("modal-confirmation").style.display = "block"
-    
+
         document.getElementById("close-modal-confirmation-yes").addEventListener("click", () => {
             document.getElementById("modal-confirmation").style.display = "none"
             putProducts(altered);
