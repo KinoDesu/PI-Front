@@ -93,6 +93,14 @@ filterButtons.forEach(btn => {
                 sorted = await fetch(`${urlApiMovimentos}/${dtStart}/${dtEnd}`).then(data => data.json());
             }
 
+            if (filter == "type") {
+                if (getCookie(filter) == 1) {
+                    sorted = await fetch(`${urlApiMovimentos}/type=entrada`).then(data => data.json());
+                } else {
+                    sorted = await fetch(`${urlApiMovimentos}/type=saida`).then(data => data.json());
+                }
+            }
+
             showMovimentos(sorted);
         } else {
             getListaMovimentos();
@@ -116,19 +124,6 @@ async function sortResult(filter) {
             setCookie("type", 1, 1);
             document.getElementById(`btn-${filter}`).classList.add("selected");
 
-            sorted = result.sort((a, b) => {
-                const nA = a.tipoAlteracao;
-                const nB = b.tipoAlteracao;
-
-                if (nA < nB) {
-                    return -1;
-                }
-                if (nA > nB) {
-                    return 1;
-                }
-                return 0;
-            });
-
             break;
         case "date":
             setCookie("id", 0, 1);
@@ -147,8 +142,5 @@ function reverseSort(filter) {
     setCookie(filter, 0, 1);
 
     document.getElementById(`btn-${filter}`).classList.add("rev-selected");
-
     sorted = sorted.reverse();
-
-    return sorted;
 }

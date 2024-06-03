@@ -113,16 +113,27 @@ let filterButtons = document.querySelectorAll(".btn-filter");
 filterButtons.forEach(btn => {
     btn.addEventListener("click", async () => {
         let filter = btn.value;
-        let order;
 
         filterButtons.forEach(btnSelected => {
             btnSelected.classList.remove("selected");
             btnSelected.classList.remove("rev-selected");
         });
 
-        getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
+        getCookie(filter) == 0 ? sortResult(filter) : reverseSort(filter);
 
-        showProdutos(order);
+        if (filter == "active") {
+            if (getCookie(filter) == 1) {
+                sorted = result.filter(function (el) {
+                    return !el.inativo
+                });
+            } else {
+                sorted = result.filter(function (el) {
+                    return el.inativo
+                });
+            }
+        }
+
+        showProdutos(sorted);
     });
 });
 
@@ -164,23 +175,6 @@ function sortResult(filter) {
             setCookie("name", 0, 1);
             setCookie("active", 1, 1);
             setCookie("amount", 0, 1);
-
-            let prevSorted;
-
-            prevSorted = result.sort((a, b) => {
-                const nA = a.nome.toUpperCase();
-                const nB = b.nome.toUpperCase();
-
-                if (nA < nB) {
-                    return -1;
-                }
-                if (nA > nB) {
-                    return 1;
-                }
-                return 0;
-            });
-
-            sorted = prevSorted.sort((a, b) => a.inativo - b.inativo);
 
             break;
         case "amount":
