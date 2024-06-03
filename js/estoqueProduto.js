@@ -12,43 +12,48 @@ async function getListaProdutos() {
 }
 
 function showProdutos(produtos) {
-    const listSpace = document.getElementById("items");
+    const listSpace = document.getElementById("list");
     listSpace.innerHTML = "";
 
-    let liHeader = document.createElement("li");
-    liHeader.className = "item";
-    liHeader.setAttribute("id", "header");
-    liHeader.innerHTML = `
-        <h3 class="cod" style="text-align: center;">ID</h3>
-        <h3 class="name" style="text-align: center;">Título</h3>
-        <h3 class="amount">Qtd</h3>
-        <h3 class="actions">Ações</h3>
-        <hr>
+    const tbl = document.createElement("table")
+
+    tbl.innerHTML = `
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Título</th>
+                <th scope="col">Qtd</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
     `;
-    listSpace.appendChild(liHeader);
+
+    let tbdTbl = document.createElement("tbody");
 
     produtos.forEach(produto => {
-        let liProduto = document.createElement("li");
-        liProduto.className = "item";
+        let trProduto = document.createElement("li");
+        trProduto.className = "item";
 
         if (produto.inativo != true) {
-            liProduto.innerHTML = `
-            <h3 class="cod">${produto.produtoId}</h3>
-            <h3 class="name">${produto.nome}</h3>
-            <h3 class="amount">${produto.quantidade}</h3>
-            <div class="alter-qtde">
-            <button class="btn-remover" value= ${produto.produtoId}>
-                <img src="./resources/images/image 25.png" alt="remover">
-            </button>
-            <input type="number" name="qtde" class="qtde-valor" id="input-produto-${produto.produtoId}">
-            <button class="btn-adicionar" value=${produto.produtoId}>
-                <img src="./resources/images/image 24.png" alt="adicionar">
-            </button>
-            </div>`;
+            trProduto.innerHTML = `
+            <th scope="row">${produto.produtoId}</th>
+            <td>${produto.nome}</td>
+            <td>${produto.quantidade}</td>
+            <td class="alter-qtde">
+                <button class="btn-remover" value= ${produto.produtoId}>
+                    <img src="./resources/images/image 25.png" alt="remover">
+                </button>
+                <input type="number" name="qtde" class="qtde-valor" id="input-produto-${produto.produtoId}">
+                <button class="btn-adicionar" value=${produto.produtoId}>
+                    <img src="./resources/images/image 24.png" alt="adicionar">
+                </button>
+            </td>`;
 
-            listSpace.appendChild(liProduto);
-            listSpace.appendChild(document.createElement("hr"));
+            tbdTbl.appendChild(trProduto);
         }
+
+        tbl.appendChild(tbdTbl);
+        listSpace.appendChild(tbl);
 
     });
     adicionarQuantidade();
@@ -188,9 +193,9 @@ document.getElementById("btn-save").addEventListener("click", () => {
         }
     });
 
-    if(altered.length>0){
+    if (altered.length > 0) {
         document.getElementById("modal-confirmation").style.display = "block"
-    
+
         document.getElementById("close-modal-confirmation-yes").addEventListener("click", () => {
             document.getElementById("modal-confirmation").style.display = "none"
             putProducts(altered);
