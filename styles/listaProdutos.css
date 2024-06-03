@@ -99,6 +99,13 @@
     width: 17px;
 }
 
+.item>td:first-of-type {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 
 .actions {
     display: flex;

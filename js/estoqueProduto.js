@@ -31,7 +31,7 @@ function showProdutos(produtos) {
     let tbdTbl = document.createElement("tbody");
 
     produtos.forEach(produto => {
-        let trProduto = document.createElement("li");
+        let trProduto = document.createElement("tr");
         trProduto.className = "item";
 
         if (produto.inativo != true) {
