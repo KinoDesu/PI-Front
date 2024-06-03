@@ -211,5 +211,13 @@
 
 #close-modal-confirmation-yes {
     background-color: #24FF00;
+}
 
+.inactive {
+    color: red;
+    opacity: 50%;
+}
+
+.inactive:hover {
+    cursor: no-drop;
 }

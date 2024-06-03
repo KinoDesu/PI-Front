@@ -34,6 +34,10 @@ function showProdutos(produtos) {
         let trProduto = document.createElement("tr");
         trProduto.className = "item";
 
+        if (produto.inativo == true) {
+            trProduto.classList.add("inactive");
+        }
+
         if (produto.inativo != true) {
             trProduto.innerHTML = `
             <th scope="row">${produto.produtoId}</th>
