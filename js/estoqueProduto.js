@@ -90,7 +90,7 @@ document.getElementById("btn-search").addEventListener("click", async () => {
             let resultSearch = await fetch(`${urlApiProduto}/busca/${search}`).then(data => data.json());
             showProdutos(resultSearch)
         } catch (error) {
-            document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+            document.getElementById("list").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
         }
     }
 });
@@ -178,7 +178,7 @@ function sortResult(filter) {
 function reverseSort(filter) {
     setCookie(filter, 0, 1);
 
-    document.getElementById(`btn-${filter}`).classList.replace("selected", "rev-selected");
+    document.getElementById(`btn-${filter}`).classList.add("rev-selected");
 
     return result.reverse();
 }

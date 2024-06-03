@@ -89,7 +89,7 @@ document.getElementById("btn-search").addEventListener("click", async () => {
             let resultSearch = await fetch(`${urlApiProduto}/busca/${search}`).then(data => data.json());
             showProdutos(resultSearch)
         } catch (error) {
-            document.getElementById("items").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
+            document.getElementById("list").innerHTML = `<h5 style="text-align: center;">Nenhum produto encontrado</h5>`;
         }
     }
 });
