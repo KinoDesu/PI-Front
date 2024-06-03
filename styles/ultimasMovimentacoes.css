@@ -45,7 +45,7 @@
     border-color: #FFFF00 #FF0000 #FF0000 #FFFF00;
 }
 
-#filter>#options .selected-date {
+#filter>#options .selected-full {
     border: 2px solid;
     border-color: #FFFF00;
 }

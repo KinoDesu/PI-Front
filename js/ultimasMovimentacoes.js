@@ -76,24 +76,27 @@ let filterButtons = document.querySelectorAll(".btn-filter");
 filterButtons.forEach(btn => {
     btn.addEventListener("click", async () => {
         let filter = btn.value;
-        var order;
 
         filterButtons.forEach(btnSelected => {
             btnSelected.classList.remove("selected");
             btnSelected.classList.remove("rev-selected");
-            btnSelected.classList.remove("selected-date");
+            btnSelected.classList.remove("selected-full");
         });
 
-        getCookie(filter) == 0 ? order = sortResult(filter) : order = reverseSort(filter);
-
-        if (filter == "date") {
-            let dtStart = document.getElementById("date-start").value;
-            let dtEnd = document.getElementById("date-end").value;
-
-            order = await fetch(`${urlApiMovimentos}/${dtStart}/${dtEnd}`).then(data => data.json());
+        if (filter != "reset") {
+            getCookie(filter) == 0 ? sortResult(filter) : reverseSort(filter);
+    
+            if (filter == "date") {
+                let dtStart = document.getElementById("date-start").value;
+                let dtEnd = document.getElementById("date-end").value;
+    
+                sorted = await fetch(`${urlApiMovimentos}/${dtStart}/${dtEnd}`).then(data => data.json());
+            }
+    
+            showMovimentos(sorted);
+        } else {
+            getListaMovimentos();
         }
-
-        showMovimentos(order);
     });
 });
 
@@ -131,15 +134,13 @@ async function sortResult(filter) {
             setCookie("id", 0, 1);
             setCookie("type", 0, 1);
 
-            document.getElementById(`btn-${filter}`).classList.add("selected-date");
+            document.getElementById(`btn-${filter}`).classList.add("selected-full");
 
             break;
 
         default:
             break;
     }
-
-    return sorted;
 }
 
 function reverseSort(filter) {
