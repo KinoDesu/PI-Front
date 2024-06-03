@@ -1,0 +1,138 @@
+#container {
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding-top: 5%;
+    gap: 1%;
+}
+
+#container>h1 {
+    text-align: center;
+    color: #FFF;
+}
+
+#filter {
+    width: 90%;
+}
+
+#filter button {
+    font-family: 'Inter', sans-serif;
+    padding: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    background-color: #9AC9EC;
+    display: flex;
+    align-items: center;
+}
+
+#filter>#options>div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+#filter>#options .selected {
+    border: 2px solid;
+    border-color: #00FF00 #FFFF00 #FFFF00 #00FF00;
+}
+
+#filter>#options .rev-selected {
+    border: 2px solid;
+    border-color: #FFFF00 #FF0000 #FF0000 #FFFF00;
+}
+
+#filter>#options .selected-date {
+    border: 2px solid;
+    border-color: #FFFF00;
+}
+
+#filter>#options .btn-filter>img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+#filter>#options>div>input[type="date"] {
+    text-transform: uppercase;
+    width: 27%;
+    font-family: 'Inter', sans-serif;
+    padding: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    background-color: #9AC9EC;
+    display: flex;
+    align-items: center;
+}
+
+#filter>#options>div>input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 0;
+}
+
+#list {
+    display: flex;
+    flex-direction: column;
+    background-color: #9AC9EC;
+    margin: 15px 25px 0 25px;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 5px;
+    width: 79%;
+    max-height: 58vh;
+    overflow-y: scroll;
+}
+
+#list>table {
+    text-align: center;
+}
+
+#list>table th,
+#list>table td {
+    padding: 7px;
+    border-bottom: 1px solid;
+}
+
+#list>table>tbody>tr>td>img {
+    width: 17px;
+}
+
+/* #list>#items {
+    list-style: none;
+}
+
+#list>#items>.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+}
+
+#list>#items>hr {
+    margin: 5px 0;
+    border-color: #000;
+}
+
+#list>#items>.item>h3:nth-of-type(2) {
+    width: 125px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#list>#items>.item>h3 {
+    font-size: small;
+    font-weight: bold;
+} */
+
+.inactive {
+    color: red;
+    opacity: 50%;
+}
+
+.inactive:hover {
+    cursor: no-drop;
+}

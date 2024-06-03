@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/listaProdutos.css">
-    <script src="js/listaProdutos.js" defer></script>
+    <link rel="stylesheet" href="styles/ultimasMovimentacoes.css">
+    <script src="js/ultimasMovimentacoes.js" defer></script>
     <title>Últimas Movimentações</title>
 </head>
 
@@ -21,20 +21,22 @@
 
             <div id="filter">
                 <div id="options">
-                    <button class="btn-filter" id="btn-id" value="id"><img src="./resources/images/numeric.png"
-                            alt="">ID</button>
-                    <button class="btn-filter" id="btn-name" value="name"><img src="./resources/images/label.png"
-                            alt="">TIPO</button>
-                    <button class="btn-filter" id="btn-active" value="active"><img
-                            src="./resources/images/pick-list.png" alt="">DT. Inicio</button>
-                    <button class="btn-filter" id="btn-active" value="active"><img
-                            src="./resources/images/pick-list.png" alt="">DT. Fim</button>
+                    <div>
+                        <button class="btn-filter" id="btn-id" value="id"><img src="./resources/images/numeric.png"
+                                alt="">ID</button>
+                        <button class="btn-filter" id="btn-type" value="type"><img
+                                src="./resources/images/positive-negative.png" alt="">TIPO</button>
+                    </div>
+                    <div>
+                        <input id="date-start" type="date" />
+                        <input id="date-end" type="date" />
+                        <button class="btn-filter" id="btn-date" value="date"><img src="./resources/images/schedule.png"
+                                alt="">Pesquisar</button>
+                    </div>
                 </div>
             </div>
 
             <div id="list">
-                <ul id="items">
-                </ul>
             </div>
         </div>
     </main>
