@@ -17,11 +17,11 @@ function showMovimentos(movProdutos) {
 
     if (movProdutos.length != 0) {
         const tbl = document.createElement("table")
-    
+
         tbl.innerHTML = `
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">ID<br>prod</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Qtd<br>Mov</th>
                 <th scope="col">Qtd<br>Est</th>
@@ -29,13 +29,13 @@ function showMovimentos(movProdutos) {
             </tr>
         </thead>
         `;
-    
+
         let tbdTbl = document.createElement("tbody");
-    
+
         movProdutos.forEach(mov => {
             let trProduto = document.createElement("tr");
             trProduto.className = "item";
-    
+
             trProduto.innerHTML = `
                 <th scope="row">${mov.produtoId}</th>
                 <td>${movType(mov.tipoAlteracao)}</td>
@@ -43,10 +43,10 @@ function showMovimentos(movProdutos) {
                 <td>${mov.quantidadeNew}</td>
                 <td>${(mov.dataAlteracao).slice(0, 10).split("-").reverse().join("/")}</td>
             `;
-    
+
             tbdTbl.appendChild(trProduto);
         });
-    
+
         tbl.appendChild(tbdTbl);
         listSpace.appendChild(tbl);
     } else {
@@ -85,14 +85,14 @@ filterButtons.forEach(btn => {
 
         if (filter != "reset") {
             getCookie(filter) == 0 ? sortResult(filter) : reverseSort(filter);
-    
+
             if (filter == "date") {
                 let dtStart = document.getElementById("date-start").value;
                 let dtEnd = document.getElementById("date-end").value;
-    
+
                 sorted = await fetch(`${urlApiMovimentos}/${dtStart}/${dtEnd}`).then(data => data.json());
             }
-    
+
             showMovimentos(sorted);
         } else {
             getListaMovimentos();

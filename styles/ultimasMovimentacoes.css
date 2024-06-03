@@ -81,7 +81,7 @@
     padding: 15px;
     border-radius: 10px;
     gap: 5px;
-    width: 79%;
+    width: 74%;
     max-height: 50vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -93,9 +93,16 @@
 
 #list>table th,
 #list>table td {
+    font-size: 14px;
     padding: 7px;
     border-bottom: 1px solid;
 }
+
+#list>table th:first-of-type {
+    max-width: 30px;
+}
+
+
 
 #list>table>tbody>tr>td>img {
     width: 17px;
